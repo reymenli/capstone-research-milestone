@@ -97,4 +97,9 @@ shape = SubResource("CylinderShape3D_fqme0")
 libraries/ = SubResource("AnimationLibrary_hqtel")
 autoplay = &"float"
 
+[node name="player_name" type="Label3D" parent="." unique_id=1323682770]
+transform = Transform3D(0.9998656, 0, -0.016393274, 0.01009721, 0.7877961, 0.61585337, 0.012914557, -0.61593616, 0.7876902, 0, 1.3664048, 0)
+text = "Player"
+font_size = 128
+
 [connection signal="body_entered" from="MobDetector" to="." method="_on_mob_detector_body_entered"]

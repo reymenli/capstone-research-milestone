@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://2wap0283yk0r"]
 
 [ext_resource type="Script" uid="uid://cc8n3086pvl18" path="res://main.gd" id="1_h2yge"]
-[ext_resource type="PackedScene" uid="uid://ceuu150fmggvr" path="res://player.tscn" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://defdm2qdva75q" path="res://mob.tscn" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://ceuu150fmggvr" path="res://Scenes/player.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://defdm2qdva75q" path="res://Scenes/mob.tscn" id="2_1bvp3"]
 [ext_resource type="FontFile" uid="uid://cyxhh7ddkn62q" path="res://fonts/Montserrat-Medium.ttf" id="4_lquwl"]
-[ext_resource type="Script" uid="uid://bq4lq2wbf1rkc" path="res://score_label.gd" id="5_7mycd"]
+[ext_resource type="Script" uid="uid://bq4lq2wbf1rkc" path="res://Scripts/score_label.gd" id="5_7mycd"]
+[ext_resource type="Script" uid="uid://whc42u654ej4" path="res://Scripts/user_interface.gd" id="5_272bh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8vjr6"]
 size = Vector3(60, 2, 60)
@@ -95,6 +96,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_wfdvh")
+script = ExtResource("5_272bh")
 
 [node name="ScoreLabel" type="Label" parent="UserInterface" unique_id=387816216]
 layout_mode = 0
@@ -130,5 +132,85 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Press Enter to retry"
 
+[node name="NameInput" type="LineEdit" parent="UserInterface" unique_id=1087277588]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Confirm" type="Button" parent="UserInterface" unique_id=435435210]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.43100002
+anchor_top = 0.75200003
+anchor_right = 0.57900006
+anchor_bottom = 0.81900007
+offset_left = 6.6799927
+offset_top = -0.08001709
+offset_right = 0.1199646
+offset_bottom = -0.26004028
+grow_horizontal = 2
+grow_vertical = 0
+text = "Confirm"
+
+[node name="HealthLabel" type="Label" parent="UserInterface" unique_id=1052487239]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.004
+anchor_top = 0.119
+anchor_right = 0.171
+anchor_bottom = 0.17
+offset_left = 0.119999886
+offset_top = -0.26000214
+offset_right = -0.12000275
+offset_bottom = 0.19999695
+theme_override_colors/font_color = Color(0.9843137, 0.13333334, 0.13333334, 1)
+text = "Health"
+
+[node name="StaminaLabel" type="Label" parent="UserInterface" unique_id=1035880860]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.018000001
+anchor_top = 0.259
+anchor_right = 0.12100001
+anchor_bottom = 0.31100002
+offset_left = -6.960001
+offset_top = 1.1399994
+offset_right = 11.879997
+offset_bottom = 1.0599823
+theme_override_colors/font_color = Color(0.12483407, 0.64030004, 0.2013362, 1)
+text = "Stamina"
+
+[node name="HealthBar" type="ProgressBar" parent="UserInterface" unique_id=1710695725]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.003
+anchor_top = 0.178
+anchor_right = 0.268
+anchor_bottom = 0.23700002
+offset_left = -0.16000009
+offset_top = -0.12000275
+offset_right = 1.0399933
+offset_bottom = 0.019989014
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[node name="StaminaBar" type="ProgressBar" parent="UserInterface" unique_id=349064629]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.007
+anchor_top = 0.319
+anchor_right = 0.26500002
+anchor_bottom = 0.37800002
+offset_left = -0.03999996
+offset_top = -0.26000977
+offset_right = 0.19998169
+offset_bottom = -0.120010376
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
+[connection signal="pressed" from="UserInterface/Confirm" to="." method="_on_confirm_pressed"]
