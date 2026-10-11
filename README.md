@@ -5,4 +5,4 @@ Tutorial that was used as a starting point [Godot Docs: Your first 3D game](http
 Assets provided by free tutorial.
 
 
-- [Video Demo]()
+- [Video Demo](https://www.youtube.com/watch?v=kJ0vWH6I5Ww)
